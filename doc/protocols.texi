@@ -243,6 +243,31 @@ For example, to convert a GIF file given inline with @command{ffmpeg}:
 ffmpeg -i "data:image/gif;base64,R0lGODdhCAAIAMIEAAAAAAAA//8AAP//AP///////////////ywAAAAACAAIAAADF0gEDLojDgdGiJdJqUX02iB4E8Q9jUMkADs=" smiley.png
 @end example
 
+@section dumpstream
+
+Input stream dump protocol.  After demuxing the input, the raw stream is
+written to a file.  This protocol can be used as a replacement for
+@command{mplayer}'s @var{dumpstream} option.
+
+A dumpstream URL has the form:
+@example
+dumpstream:@var{URL}
+@end example
+
+This protocol accepts the following option:
+@table @option
+
+@item dump_file
+Name of the dump file.
+If not specified, the input stream will be written into @file{dump.dat}.
+
+@end table
+
+For example, to dump the input stream as @file{stream.sav} during playback:
+@example
+ffplay -dump_file stream.sav dumpstream:@var{URL}
+@end example
+
 @section file
 
 File access protocol.
